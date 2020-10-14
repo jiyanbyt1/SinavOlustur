@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SinavOlustur.Models;
@@ -22,12 +23,21 @@ namespace SinavOlustur.Controllers
         {
             return View();
         }
-
+        [HttpPost]public JsonResult GirisYap(FormCollection frm)
+        {
+            var Kadi = frm["kadi"].ToString();
+            var Sifre = frm["sifre"].ToString();
+            string mesaj = "merhaba";
+            return Json(mesaj);
+        }
         public IActionResult Privacy()
         {
             return View();
         }
-
+        public ActionResult Login()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
