@@ -35,3 +35,5 @@ C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Si
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\SinavOlustur.pdb
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\SinavOlustur.genruntimeconfig.cache
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\SinavOlustur.csproj.CopyComplete
+C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Shared\LoginLayout.cshtml.g.cs
