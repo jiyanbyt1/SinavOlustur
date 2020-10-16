@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Giris";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label for="usr"><i class="fas fa-address-book"></i> Eposta:</label>
+            <input style="width:60%" type="text" required class="form-control" id="usr" name="email">
+        </div>
+        <div class="form-group">
+            <label for="pwd"><i class="fas fa-lock"></i> Şifre:</label>
+            <input style="width:60%" type="password" required class="form-control" id="pwd" name="pass">
+        </div>
+        <button id="btngiris" style="width:57%; padding:15px;margin:10px;" type="button" class="btn btn-outline-light text-dark"><h6 style="color:green">GİRİŞ YAP</h6></button>
+    </form>
+</div>
+<script src="/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btngiris").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '/Home/Giris1',
+                dataType: 'json',
+                data: { "email": $("#usr").val(), "pass": $("#pwd").val() },
+                success: function (result) {
+                    if (result == true) {
+                        $(location).prop('href', '/Home/Index');
+                    }
+                    else {
+                        alert("Girmiş olduğunuz bilgiler yanlıştır. Lütfen tekrar deneyiniz.");
+                    }
+                }
+            });
+        });
+    });
+</script>
+

@@ -13,6 +13,7 @@ namespace SinavOlustur
 {
     public class Startup
     {
+        public static string DatabaseLocation = @"C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\SinavOlustur.db";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,6 +24,8 @@ namespace SinavOlustur
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
+            services.AddDistributedMemoryCache();
             services.AddControllersWithViews();
         }
 
@@ -43,14 +46,14 @@ namespace SinavOlustur
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Login}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

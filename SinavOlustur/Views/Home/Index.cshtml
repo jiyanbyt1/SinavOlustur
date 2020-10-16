@@ -1,8 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <select id="Liste" class="custom-select custom-select-lg mb-3">
+        <option selected>Lütfen Sınav Başlığı Seçiniz</option>
+        @foreach (var item in Fonksiyonlar.BaslikListe)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <input id="tikla" type="button" value="tıkla" class="btn btn-danger" />
 </div>
+<script src="~/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tikla').click(function () {
+            var gelen = $('#Liste').val();
+            if (gelen == "Lütfen Sınav Başlığı Seçiniz") {
+                alert("dur");
+            }
+
+        });
+    });
+</script>
