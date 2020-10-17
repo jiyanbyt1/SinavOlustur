@@ -1,25 +1,367 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var i = 0;
 }
+
+<style>
+    .cevap {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+
+    .tikla {
+        margin: auto;
+        width: 50%;
+        border: 3px solid #73AD21;
+        padding: 10px;
+    }
+</style>
 <div class="container">
+
+    <label for="comment"><b>KONU BAŞLIKLARI:</b></label>
     <select id="Liste" class="custom-select custom-select-lg mb-3">
         <option selected>Lütfen Sınav Başlığı Seçiniz</option>
+
         @foreach (var item in Fonksiyonlar.BaslikListe)
         {
-            <option value="@item">@item</option>
+            i++;
+            <option value="@i">@item</option>
         }
+
     </select>
-    <input id="tikla" type="button" value="tıkla" class="btn btn-danger" />
+    <input id="tikla" type="button" value="Başlığı Seç" class="btn btn-danger" />
+
+    <div class="form-group">
+        <label for="comment">Hakkında Yazısı:</label>
+        <textarea class="form-control" rows="20" id="hyazi" name="hyazi"></textarea>
+    </div>
 </div>
+<div id="loader"></div>
+
+<hr style="height:4px;border-width:0;color:gray;background-color:#ff0000" />
+
+<div class="container">
+    <div class="row">
+        <div class="input-group mb-3 input-group-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Soru 1</span>
+            </div>
+            <textarea class="form-control" rows="3" id="s1" name="s1"></textarea>
+        </div>
+        <br />
+    </div>
+    <div class="row">
+
+        <div class="col-sm">
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">A</span>
+                </div>
+                <input id="a1" type="text" class="form-control">
+            </div>
+
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">C</span>
+                </div>
+                <input id="c1" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">B</span>
+                </div>
+                <input id="b1" type="text" class="form-control">
+            </div>
+
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">D</span>
+                </div>
+                <input id="d1" type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <select id="S1Liste" class="custom-select; cevap">
+            <option selected disabled>Doğru Cevabı Seçiniz...</option>
+            <option value="a1">A</option>
+            <option value="b1">B</option>
+            <option value="c1">C</option>
+            <option value="d1">D</option>
+        </select>
+    </div>
+</div>
+
+<form>
+    <hr style="height:3px;border-width:0;color:gray;background-color:gray" />
+
+    <div class="container">
+        <div class="row">
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Soru 2</span>
+                </div>
+                <textarea class="form-control" rows="3" id="s2" name="s2"></textarea>
+            </div>
+            <br />
+        </div>
+        <div class="row">
+
+            <div class="col-sm">
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">A</span>
+                    </div>
+                    <input id="a2" type="text" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">C</span>
+                    </div>
+                    <input id="c2" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">B</span>
+                    </div>
+                    <input id="b2" type="text" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">D</span>
+                    </div>
+                    <input id="d2" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <select id="S2Liste" class="custom-select; cevap">
+                <option selected disabled>Doğru Cevabı Seçiniz...</option>
+                <option value="a2">A</option>
+                <option value="b2">B</option>
+                <option value="c2">C</option>
+                <option value="d2">D</option>
+            </select>
+        </div>
+    </div>
+    <hr style="height:3px;border-width:0;color:gray;background-color:gray" />
+
+    <div class="container">
+        <div class="row">
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Soru 3</span>
+                </div>
+                <textarea class="form-control" rows="3" id="s3" name="s3"></textarea>
+            </div>
+            <br />
+        </div>
+        <div class="row">
+
+            <div class="col-sm">
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">A</span>
+                    </div>
+                    <input id="a3" type="text" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">C</span>
+                    </div>
+                    <input id="c3" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">B</span>
+                    </div>
+                    <input id="b3" type="text" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">D</span>
+                    </div>
+                    <input id="d3" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <select id="S3Liste" class="custom-select; cevap">
+                <option selected disabled>Doğru Cevabı Seçiniz...</option>
+                <option value="a3">A</option>
+                <option value="b3">B</option>
+                <option value="c3">C</option>
+                <option value="d3">D</option>
+            </select>
+        </div>
+    </div>
+
+    <hr style="height:3px;border-width:0;color:gray;background-color:gray" />
+
+    <div class="container">
+        <div class="row">
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Soru 4</span>
+                </div>
+                <textarea class="form-control" rows="3" id="s4" name="s4"></textarea>
+            </div>
+            <br />
+        </div>
+        <div class="row">
+
+            <div class="col-sm">
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">A</span>
+                    </div>
+                    <input id="a4" type="text" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">C</span>
+                    </div>
+                    <input id="c4" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">B</span>
+                    </div>
+                    <input id="b4" type="text" class="form-control">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">D</span>
+                    </div>
+                    <input id="d4" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <select id="S4Liste" class="custom-select; cevap">
+                <option selected disabled>Doğru Cevabı Seçiniz...</option>
+                <option value="a4">A</option>
+                <option value="b4">B</option>
+                <option value="c4">C</option>
+                <option value="d4">D</option>
+            </select>
+        </div>
+    </div>
+
+
+    <hr style="height:3px;border-width:0;color:gray;background-color:gray" />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+
+            </div>
+            <div class="col-sm">
+                <button id="sinavolustur" style="width:450px; padding:15px;margin:10px;" type="button" class="btn btn-outline-light text-dark; tikla"><h6 style="color:green;text-align:center">SINAV OLUŞTUR</h6></button>
+
+            </div>
+            <div class="col-sm">
+
+            </div>
+        </div>
+    </div>
+</form>
 <script src="~/js/jquery-3.3.1.min.js"></script>
 <script>
     $(document).ready(function () {
+
+        var select = document.getElementById('Liste');
+        var length = select.options.length;
+        if (length > 6) {
+            for (var i = 2; i < length - 1; i++) {
+                select.options[i].value = null;
+                select.remove(i);
+            }
+        }
+
+
         $('#tikla').click(function () {
-            var gelen = $('#Liste').val();
-            if (gelen == "Lütfen Sınav Başlığı Seçiniz") {
-                alert("dur");
+            document.getElementById('loader').style.display = "block";
+            var selectkutu = document.getElementById('Liste');
+            var selectkutu_value = selectkutu.options[selectkutu.selectedIndex].value;
+            var selectkutu_1 = selectkutu.options[selectkutu.selectedIndex].text;
+            if (selectkutu_1 == "Lütfen Sınav Başlığı Seçiniz") {
+                alert("Lütfen Sınav Başlığı Seçiniz");
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/SinavMetni',
+                    dataType: 'json',
+                    data: { "baslik": selectkutu_1, "Index": selectkutu_value },
+                    success: function (result) {
+                        document.getElementById('loader').style.display = "none";
+                        $('#hyazi').val(result);
+                    }
+                });
             }
 
         });
+
+
+
+
+
+        $('#sinavolustur').click(function () {
+
+            var selectkutu = document.getElementById('Liste');
+            var selectkutu_1 = selectkutu.options[selectkutu.selectedIndex].text;
+
+            var S1Liste = document.getElementById('S1Liste');
+            var Cevap1 = S1Liste.options[S1Liste.selectedIndex].text;
+
+            var S2Liste = document.getElementById('S2Liste');
+            var Cevap2 = S2Liste.options[S2Liste.selectedIndex].text;
+
+            var S3Liste = document.getElementById('S3Liste');
+            var Cevap3 = S3Liste.options[S3Liste.selectedIndex].text;
+
+            var S4Liste = document.getElementById('S4Liste');
+            var Cevap4 = S4Liste.options[S4Liste.selectedIndex].text;
+
+            if (selectkutu_1 == "Lütfen Sınav Başlığı Seçiniz" || Cevap1 == "Doğru Cevabı Seçiniz..." || Cevap2 == "Doğru Cevabı Seçiniz..." || Cevap3 == "Doğru Cevabı Seçiniz..." || Cevap4 == "Doğru Cevabı Seçiniz..." ) {
+                alert("Lütfen Eksik Bilgileri Tamamlayınız");
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/SOlustur',
+                    dataType: 'json',
+                    data: { "baslik": selectkutu_1, "Yazi": $('#hyazi').val(), "Soru1": $('#s1').val(), "Soru2": $('#s2').val(), "Soru3": $('#s3').val(), "Soru4": $('#s4').val(), "A1": $('#a1').val(), "A2": $('#a2').val(), "A3": $('#a3').val(), "A4": $('#a4').val(), "B1": $('#b1').val(), "B2": $('#b2').val(), "B3": $('#b3').val(), "B4": $('#b4').val(), "C1": $('#c1').val(), "C2": $('#c2').val(), "C3": $('#c3').val(), "C4": $('#c4').val(), "D1": $('#d1').val(), "D2": $('#d2').val(), "D3": $('#d3').val(), "D4": $('#d4').val(), "Cevap1": Cevap1, "Cevap2": Cevap2, "Cevap3": Cevap3, "Cevap4": Cevap4 },
+                    success: function (result) {
+                        document.getElementById('loader').style.display = "none";
+                        $('#hyazi').val(result);
+                    }
+                });
+            }
+
+
+        });
+
+
+
+
     });
 </script>
+
+
+

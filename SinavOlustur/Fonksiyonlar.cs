@@ -7,10 +7,11 @@ namespace SinavOlustur
 {
     public class Fonksiyonlar
     {
-        public static string GelenYetki = "";
+        public static string GelenID = "";
         public static string Baslik1 = "";
 
         public static List<string> BaslikListe = new List<string>();
         public static List<string> LinkListe = new List<string>();
+        public static List<string> YaziListe = new List<string>();
     }
 }

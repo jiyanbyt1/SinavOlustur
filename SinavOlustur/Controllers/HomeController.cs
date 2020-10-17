@@ -115,7 +115,7 @@ namespace SinavOlustur.Controllers
             if (data != null)
             {
                 sonuc = true;
-                Fonksiyonlar.GelenYetki = data.Yetki.ToString();
+                Fonksiyonlar.GelenID = data.ID.ToString();
             }
             else
             {
@@ -128,6 +128,119 @@ namespace SinavOlustur.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public JsonResult SinavMetni(string baslik, string Index)
+        {
+            Boolean sonuc = false;
+            int deger=0 ;
+            if (Index == "1")
+            {
+                deger = 0;
+            }
+            else if(Index == "2")
+            {
+                deger = 1;
+            }
+            else if (Index == "3")
+            {
+                deger = 2;
+            }
+            else if (Index == "4")
+            {
+                deger = 3;
+            }
+            else if (Index == "5")
+            {
+                deger = 4;
+            }
+
+            string url = "https://www.wired.com"+Fonksiyonlar.LinkListe[deger];
+            WebClient client = new WebClient();
+            string html = client.DownloadString(url);
+            HtmlAgilityPack.HtmlDocument dokuman = new HtmlAgilityPack.HtmlDocument();
+            dokuman.LoadHtml(html);
+            HtmlNodeCollection GelenYazi1 = dokuman.DocumentNode.SelectNodes("/html/body/div[1]/div/main/article/div[2]/div/div[1]/div[1]/div[1]");
+            HtmlNodeCollection GelenYazi2 = dokuman.DocumentNode.SelectNodes("/html/body/div[1]/div/main/article/div[2]/div/div[1]/div/div[1]");
+            HtmlNodeCollection GelenYazi3 = dokuman.DocumentNode.SelectNodes("/html/body/div[1]/div/main/article/div[2]/div/div[1]/div/div[1]");
+            HtmlNodeCollection GelenYazi4 = dokuman.DocumentNode.SelectNodes("/html/body/div[1]/div/main/article/div[2]/div/div[1]/div/div[1]");
+            HtmlNodeCollection GelenYazi5 = dokuman.DocumentNode.SelectNodes("/html/body/div[1]/div/main/article/div[2]/div/div[1]/div/div[1]");
+            Fonksiyonlar.YaziListe.Clear();
+            if (Index == "1")
+            {
+                foreach (var Yazi in GelenYazi1)
+                {
+                    Fonksiyonlar.YaziListe.Add(Yazi.InnerText);
+                }
+            }
+            else if (Index == "2")
+            {
+                foreach (var Yazi in GelenYazi2)
+                {
+                    Fonksiyonlar.YaziListe.Add(Yazi.InnerText);
+                }
+            }
+            else if (Index == "3")
+            {
+                foreach (var Yazi in GelenYazi3)
+                {
+                    Fonksiyonlar.YaziListe.Add(Yazi.InnerText);
+                }
+            }
+            else if (Index == "4")
+            {
+                foreach (var Yazi in GelenYazi4)
+                {
+                    Fonksiyonlar.YaziListe.Add(Yazi.InnerText);
+                }
+            }
+            else if (Index == "5")
+            {
+                foreach (var Yazi in GelenYazi5)
+                {
+                    Fonksiyonlar.YaziListe.Add(Yazi.InnerText);
+                }
+            }
+
+
+
+            return Json(Fonksiyonlar.YaziListe);
+        }
+
+
+
+
+        public IActionResult Sinavlar()
+        {
+            return View();
+        }
+
+        public JsonResult SOlustur(string baslik,string Yazi,string Soru1, string Soru2, string Soru3, string Soru4,string A1, string A2, string A3, string A4, string B1, string B2, string B3, string B4, string C1, string C2, string C3, string C4, string D1, string D2, string D3, string D4,string Cevap1, string Cevap2, string Cevap3, string Cevap4)
+        {
+            Boolean mesaj = false;
+            
+            string query = "select * from Login";
+            
+         
+
+
+            string query1 = "insert into Sorular(Kullanici,SoruID,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Fonksiyonlar.GelenID + "','" + Soru1 + "','" + baslik + "','" + Yazi + "','" + A1 + "','" + B1 + "','" + C1 + "','" + D1 + "','" + Cevap1 + "')";
+            string query2 = "insert into Sorular(Kullanici,SoruID,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Fonksiyonlar.GelenID + "','" + Soru2 + "','" + baslik + "','" + Yazi + "','" + A2 + "','" + B2 + "','" + C2 + "','" + D2 + "','" + Cevap2 + "')";
+            string query3 = "insert into Sorular(Kullanici,SoruID,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Fonksiyonlar.GelenID + "','" + Soru3 + "','" + baslik + "','" + Yazi + "','" + A3 + "','" + B3 + "','" + C3 + "','" + D3 + "','" + Cevap3 + "')";
+            string query4 = "insert into Sorular(Kullanici,SoruID,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Fonksiyonlar.GelenID + "','" + Soru4 + "','" + baslik + "','" + Yazi + "','" + A4 + "','" + B4 + "','" + C4 + "','" + D4 + "','" + Cevap4 + "')";
+            dbCon.Execute(query1);
+            dbCon.Execute(query2);
+            dbCon.Execute(query3);
+            dbCon.Execute(query4);
+
+            return Json(mesaj);
+        }
+
+
+
+
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
