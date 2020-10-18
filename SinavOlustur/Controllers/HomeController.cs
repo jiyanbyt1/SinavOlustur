@@ -330,9 +330,28 @@ namespace SinavOlustur.Controllers
             ViewBag.B1 = SinavlarList[0].B;
             ViewBag.C1 = SinavlarList[0].C;
             ViewBag.D1 = SinavlarList[0].D;
+
+            ViewBag.A2 = SinavlarList[1].A;
+            ViewBag.B2 = SinavlarList[1].B;
+            ViewBag.C2 = SinavlarList[1].C;
+            ViewBag.D2 = SinavlarList[1].D;
+
+            ViewBag.A3 = SinavlarList[2].A;
+            ViewBag.B3 = SinavlarList[2].B;
+            ViewBag.C3 = SinavlarList[2].C;
+            ViewBag.D3 = SinavlarList[2].D;
+
+            ViewBag.A4 = SinavlarList[3].A;
+            ViewBag.B4 = SinavlarList[3].B;
+            ViewBag.C4 = SinavlarList[3].C;
+            ViewBag.D4 = SinavlarList[3].D;
             return View();
         }
-
+        public JsonResult SinaviTamamla(string S1,string S2,string S3,string S4)
+        {
+            Boolean mesaj = false;
+            return Json(mesaj);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

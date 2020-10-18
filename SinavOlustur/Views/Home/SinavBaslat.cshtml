@@ -18,21 +18,111 @@
 </div>
 <div class="container">
     <div class="row">
-
-        <div class="col-lg-12">
-            <div class="col-lg-1">
-                <div class="container">
-                    <div style="padding:15px">
-                    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col bg">
+                    <b>1) </b><p>@ViewBag.Soru1</p>
+                    <input type="radio" id="S1A" name="S1" value="A">
+                    <label for="male"><b>A)</b> @ViewBag.A1</label><br>
+                    <input type="radio" id="S1B" name="S1" value="B">
+                    <label for="female"><b>B)</b> @ViewBag.B1</label><br>
+                    <input type="radio" id="S1C" name="S1" value="C">
+                    <label for="other"><b>C)</b> @ViewBag.C1</label>
+                    <br />
+                    <input type="radio" id="S1D" name="S1" value="D">
+                    <label for="other"><b>D)</b> @ViewBag.D1</label>
+                </div>
+                <div class="col bg">
+                    <b>2) </b><p>@ViewBag.Soru2</p>
+                    <input type="radio" id="S2A" name="S2" value="A">
+                    <label for="male"><b>A)</b> @ViewBag.A2</label><br>
+                    <input type="radio" id="S2B" name="S2" value="B">
+                    <label for="female"><b>B)</b> @ViewBag.B2</label><br>
+                    <input type="radio" id="S2C" name="S2" value="C">
+                    <label for="other"><b>C)</b> @ViewBag.C2</label>
+                    <br />
+                    <input type="radio" id="S2D" name="S2" value="D">
+                    <label for="other"><b>D)</b> @ViewBag.D2</label>
                 </div>
             </div>
-
-
-            <div class="col">
-                <div class="container">
+        </div>
+        <br />
+        <br />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col bg">
+                    <b>3) </b><p>@ViewBag.Soru3</p>
+                    <input type="radio" id="S3A" name="S3" value="A">
+                    <label for="A)"><b>A)</b> @ViewBag.A3</label><br>
+                    <input type="radio" id="S3B" name="S3" value="B">
+                    <label for="B)"><b>B)</b> @ViewBag.B3</label><br>
+                    <input type="radio" id="S3C" name="S3" value="C">
+                    <label for="C)"><b>C)</b> @ViewBag.C3</label>
+                    <br />
+                    <input type="radio" id="S3D" name="S3" value="D">
+                    <label for="D)"><b>D)</b> @ViewBag.D3</label>
+                </div>
+                <div class="col bg">
+                    <b>4) </b><p>@ViewBag.Soru4</p>
+                    <input type="radio" id="S4A" name="S4" value="A">
+                    <label for="A)"><b>A)</b> @ViewBag.A4</label><br>
+                    <input type="radio" id="S4B" name="S4" value="B">
+                    <label for="B)"><b>B)</b>@ViewBag.B4</label><br>
+                    <input type="radio" id="S4C" name="S4" value="C">
+                    <label for="C)"><b>C)</b> @ViewBag.C4</label>
+                    <br />
+                    <input type="radio" id="S4D" name="S4" value="D">
+                    <label for="D)"><b>D)</b> @ViewBag.D4</label>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<hr style="height:4px;border-width:0;color:gray;background-color:#ff0000" />
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
 
+        </div>
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+            <br />
+            <button id="SinaviTamamla" style="width:500px; padding:15px;margin:10px;" type="button" class="btn btn-outline-light text-dark"><h6 style="color:red">SINAVI TAMAMLA</h6></button>
+        </div>
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<script src="~/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#SinaviTamamla').click(function () {
+            var al = document.getElementsByName("S1");
+
+
+            alert($("input[type=]"));
+            $.ajax({
+                type: 'POST',
+                url: '/Home/SinaviTamamla',
+                dataType: 'json',
+                data: { "S1": $('.S1').val() },
+                success: function (result) {
+
+                }
+
+            });
+        });
+    });
+</script>
