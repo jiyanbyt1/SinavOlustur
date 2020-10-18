@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "KulSinavListesi";
+    Layout = "~/Views/Shared/KullaniciLayout.cshtml";
+    int say = 0;
+}
+
+<h2>Oluşturulan Sınavlar</h2>
+<hr />
+<div class="container">
+    <h4>Sınav Listesi:</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Başlık</th>
+                <th>Tarih</th>
+                <th>Başlat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Liste)
+            {
+                say = say + 1;
+                <tr id="@say">
+
+                    <td>@say</td>
+                    <td>@item.SinavBasligi</td>
+                    <td>@item.Tarih</td>
+                    <td><a style="background-color:blue; color:aliceblue" href="#" onclick="satirSil(@item.SinavID,'/Home/SinavaGiris',@item.SinavNo);return false">BAŞLAT</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/jquery-3.3.1.min.js"></script>
+<script>
+    function satirSil(musteriid, url, sinavno) {
+
+        $.ajax({
+            type: 'POST', // veya POST
+            url: url, //ajax.php
+            data: 'sinavno=' + sinavno,
+            success: function (html) {
+                if (html == true) {
+                    $(location).prop('href', '/Home/SinavBaslat');
+                }
+                else {
+                    alert("Silme İşlemi Başarısız.");
+                }
+            }
+        });
+
+    }
+</script>
+

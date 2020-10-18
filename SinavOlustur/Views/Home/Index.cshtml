@@ -17,6 +17,8 @@
         padding: 10px;
     }
 </style>
+
+
 <div class="container">
 
     <label for="comment"><b>KONU BAŞLIKLARI:</b></label>
@@ -31,13 +33,23 @@
 
     </select>
     <input id="tikla" type="button" value="Başlığı Seç" class="btn btn-danger" />
+    <div class="row">
+        <div class="col-sm">
 
+        </div>
+        <div class="col-sm">
+            <div id="loader"></div>
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
     <div class="form-group">
-        <label for="comment">Hakkında Yazısı:</label>
+        <label for="comment">Başlık Yazısı:</label>
         <textarea class="form-control" rows="20" id="hyazi" name="hyazi"></textarea>
     </div>
 </div>
-<div id="loader"></div>
+
 
 <hr style="height:4px;border-width:0;color:gray;background-color:#ff0000" />
 
@@ -284,18 +296,8 @@
 <script>
     $(document).ready(function () {
 
-        var select = document.getElementById('Liste');
-        var length = select.options.length;
-        if (length > 6) {
-            for (var i = 2; i < length - 1; i++) {
-                select.options[i].value = null;
-                select.remove(i);
-            }
-        }
-
-
         $('#tikla').click(function () {
-            document.getElementById('loader').style.display = "block";
+            
             var selectkutu = document.getElementById('Liste');
             var selectkutu_value = selectkutu.options[selectkutu.selectedIndex].value;
             var selectkutu_1 = selectkutu.options[selectkutu.selectedIndex].text;
@@ -303,6 +305,7 @@
                 alert("Lütfen Sınav Başlığı Seçiniz");
             }
             else {
+                document.getElementById('loader').style.display = "block";
                 $.ajax({
                     type: 'POST',
                     url: '/Home/SinavMetni',
@@ -338,7 +341,7 @@
             var S4Liste = document.getElementById('S4Liste');
             var Cevap4 = S4Liste.options[S4Liste.selectedIndex].text;
 
-            if (selectkutu_1 == "Lütfen Sınav Başlığı Seçiniz" || Cevap1 == "Doğru Cevabı Seçiniz..." || Cevap2 == "Doğru Cevabı Seçiniz..." || Cevap3 == "Doğru Cevabı Seçiniz..." || Cevap4 == "Doğru Cevabı Seçiniz..." ) {
+            if (selectkutu_1 == "Lütfen Sınav Başlığı Seçiniz" || Cevap1 == "Doğru Cevabı Seçiniz..." || Cevap2 == "Doğru Cevabı Seçiniz..." || Cevap3 == "Doğru Cevabı Seçiniz..." || Cevap4 == "Doğru Cevabı Seçiniz...") {
                 alert("Lütfen Eksik Bilgileri Tamamlayınız");
             }
             else {
@@ -348,18 +351,17 @@
                     dataType: 'json',
                     data: { "baslik": selectkutu_1, "Yazi": $('#hyazi').val(), "Soru1": $('#s1').val(), "Soru2": $('#s2').val(), "Soru3": $('#s3').val(), "Soru4": $('#s4').val(), "A1": $('#a1').val(), "A2": $('#a2').val(), "A3": $('#a3').val(), "A4": $('#a4').val(), "B1": $('#b1').val(), "B2": $('#b2').val(), "B3": $('#b3').val(), "B4": $('#b4').val(), "C1": $('#c1').val(), "C2": $('#c2').val(), "C3": $('#c3').val(), "C4": $('#c4').val(), "D1": $('#d1').val(), "D2": $('#d2').val(), "D3": $('#d3').val(), "D4": $('#d4').val(), "Cevap1": Cevap1, "Cevap2": Cevap2, "Cevap3": Cevap3, "Cevap4": Cevap4 },
                     success: function (result) {
-                        document.getElementById('loader').style.display = "none";
-                        $('#hyazi').val(result);
+                        if (result == true) {
+                            $(location).prop('href', '/Home/SinavlarListesi');
+                        } else {
+                            alert("İşlem Başarısız. Lütfen Tekrar Deneyiniz")
+                        }
                     }
                 });
             }
 
 
         });
-
-
-
-
     });
 </script>
 

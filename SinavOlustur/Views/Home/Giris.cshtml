@@ -27,8 +27,11 @@
                 dataType: 'json',
                 data: { "email": $("#usr").val(), "pass": $("#pwd").val() },
                 success: function (result) {
-                    if (result == true) {
-                        $(location).prop('href', '/Home/Index');
+                    if (result == 1) {
+                        $(location).prop('href', '/Home/SinavlarListesi');
+                    }
+                    else if (result == 2) {
+                        $(location).prop('href', '/Home/KulSinavListesi');
                     }
                     else {
                         alert("Girmiş olduğunuz bilgiler yanlıştır. Lütfen tekrar deneyiniz.");

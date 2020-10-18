@@ -145,4 +145,7 @@ C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Ra
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\bin\Debug\netcoreapp3.1\HtmlAgilityPack.dll
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\SinavOlustur.csproj.CoreCompileInputs.cache
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\SinavOlustur.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Home\Sinavlar.cshtml.g.cs
+C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Home\SinavlarListesi.cshtml.g.cs
+C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Shared\KullaniciLayout.cshtml.g.cs
+C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Home\KulSinavListesi.cshtml.g.cs
+C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Home\SinavBaslat.cshtml.g.cs

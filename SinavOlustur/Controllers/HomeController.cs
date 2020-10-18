@@ -32,6 +32,8 @@ namespace SinavOlustur.Controllers
         List<string> liste = new List<string>();
         public IActionResult Index()
         {
+            Fonksiyonlar.BaslikListe.Clear();
+            Fonksiyonlar.LinkListe.Clear();
             string url = "https://www.wired.com";
             WebClient client = new WebClient();
             string html = client.DownloadString(url);
@@ -105,21 +107,58 @@ namespace SinavOlustur.Controllers
             public string Sifre { get; set; }
             public string Yetki { get; set; }
         }
+        public class Sinav
+        {
+            public int SinavID { get; set; }
+            public int Sayi { get; set; }
+        }
+        public class Sorular
+        {
+            public int SorularID { get; set; }
+            public int SinavID { get; set; }
+            public int Kullanici { get; set; }
+            public string SoruAdi { get; set; }
+            
+            public string SoruBasligi { get; set; }
+            public string SoruMetni { get; set; }
+            public string A { get; set; }
+            public string B { get; set; }
+            public string C { get; set; }
+            public string D { get; set; }
+            public string DogruCevap { get; set; }
+        }
+        public class Sinavlar
+        {
+            public int SinavID { get; set; }
+            public int SinavNo { get; set; }
+            public int KullaniciID { get; set; }
+            public string SinavBasligi { get; set; }
+            public string Tarih { get; set; }
+        }
 
         [HttpPost]
         public JsonResult Giris1(string email, string pass)
         {
             List<Login> LoginList = dbCon.Query<Login>("select * from Login").ToList();
-            Boolean sonuc;
+            int sonuc=0;
             var data = LoginList.Where<Login>(item => item.Email == email & item.Sifre==pass).FirstOrDefault();
             if (data != null)
             {
-                sonuc = true;
-                Fonksiyonlar.GelenID = data.ID.ToString();
+                if (data.Yetki.ToString() == "Yönetici")
+                {
+                    sonuc = 1;
+                    Fonksiyonlar.GelenID = data.ID.ToString();
+                }
+                else
+                {
+                    sonuc = 2;
+                    Fonksiyonlar.GelenID = data.ID.ToString();
+                }
+ 
             }
             else
             {
-                sonuc = false;
+                sonuc = 0;
             }
 
             return Json(sonuc);
@@ -209,36 +248,90 @@ namespace SinavOlustur.Controllers
 
 
 
-        public IActionResult Sinavlar()
+        public IActionResult SinavlarListesi()
         {
+            List<Sinavlar> SinavlarList = dbCon.Query<Sinavlar>("select * from Sinavlar where KullaniciID='"+Fonksiyonlar.GelenID+"'").ToList();
+            ViewBag.Liste = SinavlarList;
             return View();
         }
 
         public JsonResult SOlustur(string baslik,string Yazi,string Soru1, string Soru2, string Soru3, string Soru4,string A1, string A2, string A3, string A4, string B1, string B2, string B3, string B4, string C1, string C2, string C3, string C4, string D1, string D2, string D3, string D4,string Cevap1, string Cevap2, string Cevap3, string Cevap4)
         {
+
+            
             Boolean mesaj = false;
-            
-            string query = "select * from Login";
-            
-         
-
-
-            string query1 = "insert into Sorular(Kullanici,SoruID,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Fonksiyonlar.GelenID + "','" + Soru1 + "','" + baslik + "','" + Yazi + "','" + A1 + "','" + B1 + "','" + C1 + "','" + D1 + "','" + Cevap1 + "')";
-            string query2 = "insert into Sorular(Kullanici,SoruID,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Fonksiyonlar.GelenID + "','" + Soru2 + "','" + baslik + "','" + Yazi + "','" + A2 + "','" + B2 + "','" + C2 + "','" + D2 + "','" + Cevap2 + "')";
-            string query3 = "insert into Sorular(Kullanici,SoruID,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Fonksiyonlar.GelenID + "','" + Soru3 + "','" + baslik + "','" + Yazi + "','" + A3 + "','" + B3 + "','" + C3 + "','" + D3 + "','" + Cevap3 + "')";
-            string query4 = "insert into Sorular(Kullanici,SoruID,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Fonksiyonlar.GelenID + "','" + Soru4 + "','" + baslik + "','" + Yazi + "','" + A4 + "','" + B4 + "','" + C4 + "','" + D4 + "','" + Cevap4 + "')";
+            List<Sinav> SinavList = dbCon.Query<Sinav>("select * from Sinav").ToList();
+            var Sayi = SinavList[0].Sayi;
+            string query1 = "insert into Sorular(SinavID,Kullanici,SoruAdi,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Sayi + "','" + Fonksiyonlar.GelenID + "','" + Soru1 + "','" + baslik + "','" + Yazi + "','" + A1 + "','" + B1 + "','" + C1 + "','" + D1 + "','" + Cevap1 + "')";
+            string query2 = "insert into Sorular(SinavID,Kullanici,SoruAdi,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Sayi + "','" + Fonksiyonlar.GelenID + "','" + Soru2 + "','" + baslik + "','" + Yazi + "','" + A2 + "','" + B2 + "','" + C2 + "','" + D2 + "','" + Cevap2 + "')";
+            string query3 = "insert into Sorular(SinavID,Kullanici,SoruAdi,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Sayi + "','" + Fonksiyonlar.GelenID + "','" + Soru3 + "','" + baslik + "','" + Yazi + "','" + A3 + "','" + B3 + "','" + C3 + "','" + D3 + "','" + Cevap3 + "')";
+            string query4 = "insert into Sorular(SinavID,Kullanici,SoruAdi,SoruBasligi,SoruMetni,A,B,C,D,DogruCevap) values('" + Sayi + "','" + Fonksiyonlar.GelenID + "','" + Soru4 + "','" + baslik + "','" + Yazi + "','" + A4 + "','" + B4 + "','" + C4 + "','" + D4 + "','" + Cevap4 + "')";
             dbCon.Execute(query1);
             dbCon.Execute(query2);
             dbCon.Execute(query3);
             dbCon.Execute(query4);
 
+            List<Sorular> SinavlarLis1t = dbCon.Query<Sorular>("select * from Sorular").ToList();
+
+            string querySinavlar = "insert into Sinavlar(SinavNo,KullaniciID,SinavBasligi,Tarih) values('" + Sayi + "','" + Fonksiyonlar.GelenID + "','" + baslik + "','" + DateTime.Now + "') ";
+            dbCon.Execute(querySinavlar);
+
+            Sayi = Sayi + 1;
+            string queryupdate = "update Sinav Set Sayi='" + Sayi + "' where SinavID=2";
+            dbCon.Execute(queryupdate);
+
+            mesaj = true;
+
             return Json(mesaj);
+
+        }
+        [HttpPost]
+        public JsonResult SinavSil(int id,int sinavno)
+        {
+            Boolean Mesaj = false;
+
+            string query = "delete from Sinavlar where SinavID='" + id + "'";
+            dbCon.Execute(query);
+
+            string query2 = "delete from Sorular where SinavID='" + sinavno + "'";
+            dbCon.Execute(query2);
+            Mesaj = true;
+            return Json(Mesaj);
         }
 
 
+        //Kullanıcı İşlemleri için;
+        public IActionResult KulSinavListesi()
+        {
+            List<Sinavlar> SinavlarList = dbCon.Query<Sinavlar>("select * from Sinavlar").ToList();
+            ViewBag.Liste = SinavlarList;
+            return View();
+        }
+        public JsonResult SinavaGiris(int sinavno)
+        {
+            Boolean Mesaj = false;
+            Fonksiyonlar.SinavGirisID = sinavno;
+            Mesaj = true;
+            return Json(Mesaj);
+        }
+        public IActionResult SinavBaslat()
+        {
+            var data = dbCon.Query<Sorular>("select * from Sorular where SinavID='" + Fonksiyonlar.SinavGirisID + "'").FirstOrDefault();// Tek satır
+            ViewBag.Baslik = data.SoruBasligi;
+            ViewBag.Yazi = data.SoruMetni;
+            List<Sorular> SinavlarList = dbCon.Query<Sorular>("select * from Sorular where SinavID='" + Fonksiyonlar.SinavGirisID + "'").ToList();
 
+            ViewBag.Soru1 = SinavlarList[0].SoruAdi;
+            ViewBag.Soru2 = SinavlarList[1].SoruAdi;
+            ViewBag.Soru3 = SinavlarList[2].SoruAdi;
+            ViewBag.Soru4 = SinavlarList[3].SoruAdi;
 
-
+            ViewBag.A1 = SinavlarList[0].A;
+            ViewBag.B1 = SinavlarList[0].B;
+            ViewBag.C1 = SinavlarList[0].C;
+            ViewBag.D1 = SinavlarList[0].D;
+            return View();
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
