@@ -4,7 +4,68 @@
     Layout = "~/Views/Shared/KullaniciLayout.cshtml";
     int i = 0;
 }
+<style>
+    #S1A1 {
+        background-color: white;
+    }
+    #S1B1 {
+        background-color: white;
+    }
+    #S1C1 {
+        background-color: white;
+    }
+    #S1D1 {
+        background-color: white;
+    }
 
+    #S2A2 {
+        background-color: white;
+    }
+
+    #S2B2 {
+        background-color: white;
+    }
+
+    #S2C2 {
+        background-color: white;
+    }
+
+    #S2D2 {
+        background-color: white;
+    }
+
+    #S3A3 {
+        background-color: white;
+    }
+
+    #S3B3 {
+        background-color: white;
+    }
+
+    #S3C3 {
+        background-color: white;
+    }
+
+    #S3D3 {
+        background-color: white;
+    }
+
+    #S4A4 {
+        background-color: white;
+    }
+
+    #S4B4 {
+        background-color: white;
+    }
+
+    #S4C4 {
+        background-color: white;
+    }
+
+    #S4D4 {
+        background-color: white;
+    }
+</style>
 <h2 style="text-align:center">SINAV TESTİ</h2>
 <hr style="height:4px;border-width:0;color:gray;background-color:#ff0000" />
 <div class="container">
@@ -23,26 +84,26 @@
                 <div class="col bg">
                     <b>1) </b><p>@ViewBag.Soru1</p>
                     <input type="radio" id="S1A" name="S1" value="A">
-                    <label for="male"><b>A)</b> @ViewBag.A1</label><br>
+                    <label id="S1A1" for="male"><b>A)</b> @ViewBag.A1</label><br>
                     <input type="radio" id="S1B" name="S1" value="B">
-                    <label for="female"><b>B)</b> @ViewBag.B1</label><br>
+                    <label id="S1B1" for="female"><b>B)</b> @ViewBag.B1</label><br>
                     <input type="radio" id="S1C" name="S1" value="C">
-                    <label for="other"><b>C)</b> @ViewBag.C1</label>
+                    <label id="S1C1" for="other"><b>C)</b> @ViewBag.C1</label>
                     <br />
                     <input type="radio" id="S1D" name="S1" value="D">
-                    <label for="other"><b>D)</b> @ViewBag.D1</label>
+                    <label id="S1D1" for="other"><b>D)</b> @ViewBag.D1</label>
                 </div>
                 <div class="col bg">
                     <b>2) </b><p>@ViewBag.Soru2</p>
                     <input type="radio" id="S2A" name="S2" value="A">
-                    <label for="male"><b>A)</b> @ViewBag.A2</label><br>
+                    <label id="S2A2" for="male"><b>A)</b> @ViewBag.A2</label><br>
                     <input type="radio" id="S2B" name="S2" value="B">
-                    <label for="female"><b>B)</b> @ViewBag.B2</label><br>
+                    <label id="S2B2" for="female"><b>B)</b> @ViewBag.B2</label><br>
                     <input type="radio" id="S2C" name="S2" value="C">
-                    <label for="other"><b>C)</b> @ViewBag.C2</label>
+                    <label id="S2C2" for="other"><b>C)</b> @ViewBag.C2</label>
                     <br />
                     <input type="radio" id="S2D" name="S2" value="D">
-                    <label for="other"><b>D)</b> @ViewBag.D2</label>
+                    <label id="S2D2" for="other"><b>D)</b> @ViewBag.D2</label>
                 </div>
             </div>
         </div>
@@ -53,26 +114,26 @@
                 <div class="col bg">
                     <b>3) </b><p>@ViewBag.Soru3</p>
                     <input type="radio" id="S3A" name="S3" value="A">
-                    <label for="A)"><b>A)</b> @ViewBag.A3</label><br>
+                    <label id="S3A3" for="A)"><b>A)</b> @ViewBag.A3</label><br>
                     <input type="radio" id="S3B" name="S3" value="B">
-                    <label for="B)"><b>B)</b> @ViewBag.B3</label><br>
+                    <label id="S3B3" for="B)"><b>B)</b> @ViewBag.B3</label><br>
                     <input type="radio" id="S3C" name="S3" value="C">
-                    <label for="C)"><b>C)</b> @ViewBag.C3</label>
+                    <label id="S3C3" for="C)"><b>C)</b> @ViewBag.C3</label>
                     <br />
                     <input type="radio" id="S3D" name="S3" value="D">
-                    <label for="D)"><b>D)</b> @ViewBag.D3</label>
+                    <label id="S3D3" for="D)"><b>D)</b> @ViewBag.D3</label>
                 </div>
                 <div class="col bg">
                     <b>4) </b><p>@ViewBag.Soru4</p>
                     <input type="radio" id="S4A" name="S4" value="A">
-                    <label for="A)"><b>A)</b> @ViewBag.A4</label><br>
+                    <label id="S4A4" for="A)"><b>A)</b> @ViewBag.A4</label><br>
                     <input type="radio" id="S4B" name="S4" value="B">
-                    <label for="B)"><b>B)</b>@ViewBag.B4</label><br>
+                    <label id="S4B4" for="B)"><b>B)</b> @ViewBag.B4</label><br>
                     <input type="radio" id="S4C" name="S4" value="C">
-                    <label for="C)"><b>C)</b> @ViewBag.C4</label>
+                    <label id="S4C4" for="C)"><b>C)</b> @ViewBag.C4</label>
                     <br />
                     <input type="radio" id="S4D" name="S4" value="D">
-                    <label for="D)"><b>D)</b> @ViewBag.D4</label>
+                    <label id="S4D4" for="D)"><b>D)</b> @ViewBag.D4</label>
                 </div>
             </div>
         </div>
@@ -106,23 +167,197 @@
 <br />
 <br />
 <script src="~/jquery-3.3.1.min.js"></script>
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         $('#SinaviTamamla').click(function () {
-            var al = document.getElementsByName("S1");
+            var S1 = "", S2 = "", S3 = "", S4 = "";
+            var alS1A = $('#S1A').prop("checked");
+            var alS1B = $('#S1B').prop("checked");
+            var alS1C = $('#S1C').prop("checked");
+            var alS1D = $('#S1D').prop("checked");
+
+            var alS2A = $('#S2A').prop("checked");
+            var alS2B = $('#S2B').prop("checked");
+            var alS2C = $('#S2C').prop("checked");
+            var alS2D = $('#S2D').prop("checked");
+
+            var alS3A = $('#S3A').prop("checked");
+            var alS3B = $('#S3B').prop("checked");
+            var alS3C = $('#S3C').prop("checked");
+            var alS3D = $('#S3D').prop("checked");
+
+            var alS4A = $('#S4A').prop("checked");
+            var alS4B = $('#S4B').prop("checked");
+            var alS4C = $('#S4C').prop("checked");
+            var alS4D = $('#S4D').prop("checked");
+            if (alS1A == true) { S1 = "A" }
+            else if (alS1B == true) { S1 = "B" }
+            else if (alS1C == true) { S1 = "C" }
+            else if (alS1D == true) { S1 = "D" }
+            else { S1 = "0" }
+
+            if (alS2A == true) { S2 = "A" }
+            else if (alS2B == true) { S2 = "B" }
+            else if (alS2C == true) { S2 = "C" }
+            else if (alS2D == true) { S2 = "D" }
+            else { S2 = "0" }
+
+            if (alS3A == true) { S3 = "A" }
+            else if (alS3B == true) { S3 = "B" }
+            else if (alS3C == true) { S3 = "C" }
+            else if (alS3D == true) { S3 = "D" }
+            else { S3 = "0" }
+
+            if (alS4A == true) { S4 = "A" }
+            else if (alS4B == true) { S4 = "B" }
+            else if (alS4C == true) { S4 = "C" }
+            else if (alS4D == true) { S4 = "D" }
+            else { S4 = "0" }
 
 
-            alert($("input[type=]"));
-            $.ajax({
-                type: 'POST',
-                url: '/Home/SinaviTamamla',
-                dataType: 'json',
-                data: { "S1": $('.S1').val() },
-                success: function (result) {
+            if (S1 == "0" || S2 == "0" || S3 == "0" || S4 == "0") {
+                alert("Lütfen Tüm Soruları İşaretleyiniz.");
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/SinaviTamamla',
+                    dataType: 'json',
+                    data: { "S1": S1, "S2":S2, "S3":S3, "S4":S4 },
+                    success: function (result) {
 
-                }
 
-            });
+                        if (result[0] == "T") {
+                            var Renk1T = "";
+                            if (result[1] == "A") { Renk1T = "S1A1"; }
+                            else if (result[1] == "B") { Renk1T = "S1B1" }
+                            else if (result[1] == "C") { Renk1T = "S1C1" }
+                            else if (result[1] == "D") { Renk1T = "S1D1" }
+                            document.getElementById(Renk1T).style.backgroundColor = "green";
+                            document.getElementById(Renk1T).style.color = "white";
+                        }
+                        else {
+                            var RenkYanlis1 = "", Renk1F = "";
+                            if (result[2] == "A") { Renk1F = "S1A1"; }
+                            else if (result[2] == "B") { Renk1F = "S1B1" }
+                            else if (result[2] == "C") { Renk1F = "S1C1" }
+                            else if (result[2] == "D") { Renk1F = "S1D1" }
+                            document.getElementById(Renk1F).style.backgroundColor = "green";
+                            document.getElementById(Renk1F).style.color = "white";
+                            if (result[1] == "A") { RenkYanlis1 = "S1A1"; }
+                            else if (result[1] == "B") { RenkYanlis1 = "S1B1" }
+                            else if (result[1] == "C") { RenkYanlis1 = "S1C1" }
+                            else if (result[1] == "D") { RenkYanlis1 = "S1D1" }
+                            document.getElementById(RenkYanlis1).style.backgroundColor = "red";
+                            document.getElementById(RenkYanlis1).style.color = "white";
+                        }
+
+                        if (result[3] == "T") {
+                            var Renk2T = "";
+                            if (result[4] == "A") { Renk2T = "S2A2"; }
+                            else if (result[4] == "B") { Renk2T = "S2B2" }
+                            else if (result[4] == "C") { Renk2T = "S2C2" }
+                            else if (result[4] == "D") { Renk2T = "S2D2" }
+                            document.getElementById(Renk2T).style.backgroundColor = "green";
+                            document.getElementById(Renk2T).style.color = "white";
+                        }
+                        else {
+                            var RenkYanlis2 = "", Renk2F = "";
+                            if (result[5] == "A") { Renk2F = "S2A2"; }
+                            else if (result[5] == "B") { Renk2F = "S2B2" }
+                            else if (result[5] == "C") { Renk2F = "S2C2" }
+                            else if (result[5] == "D") { Renk2F = "S2D2" }
+                            document.getElementById(Renk2F).style.backgroundColor = "green";
+                            document.getElementById(Renk2F).style.color = "white";
+                            if (result[4] == "A") { RenkYanlis2 = "S2A2"; }
+                            else if (result[4] == "B") { RenkYanlis2 = "S2B2" }
+                            else if (result[4] == "C") { RenkYanlis2 = "S2C2" }
+                            else if (result[4] == "D") { RenkYanlis2 = "S2D2" }
+                            document.getElementById(RenkYanlis2).style.backgroundColor = "red";
+                            document.getElementById(RenkYanlis2).style.color = "white";
+                        }
+
+
+
+
+
+                        if (result[6] == "T") {
+                            var Renk3T = "";
+                            if (result[7] == "A") { Renk3T = "S3A3"; }
+                            else if (result[7] == "B") { Renk3T = "S3B3" }
+                            else if (result[7] == "C") { Renk3T = "S3C3" }
+                            else if (result[7] == "D") { Renk3T = "S3D3" }
+                            document.getElementById(Renk3T).style.backgroundColor = "green";
+                            document.getElementById(Renk3T).style.color = "white";
+                        }
+                        else {
+                            var RenkYanlis3 = "", Renk3F = "";
+                            if (result[8] == "A") { Renk3F = "S3A3"; }
+                            else if (result[8] == "B") { Renk3F = "S3B3" }
+                            else if (result[8] == "C") { Renk3F = "S3C3" }
+                            else if (result[8] == "D") { Renk3F = "S3D3" }
+                            document.getElementById(Renk3F).style.backgroundColor = "green";
+                            document.getElementById(Renk3F).style.color = "white";
+                            if (result[7] == "A") { RenkYanlis3 = "S3A3"; }
+                            else if (result[7] == "B") { RenkYanlis3 = "S3B3" }
+                            else if (result[7] == "C") { RenkYanlis3 = "S3C3" }
+                            else if (result[7] == "D") { RenkYanlis3 = "S3D3" }
+                            document.getElementById(RenkYanlis3).style.backgroundColor = "red";
+                            document.getElementById(RenkYanlis3).style.color = "white";
+
+                        }
+
+
+                        if (result[9] == "T") {
+                            var Renk4T = "";
+                            if (result[10] == "A") { Renk4T = "S4A4"; }
+                            else if (result[10] == "B") { Renk4T = "S4B4" }
+                            else if (result[10] == "C") { Renk4T = "S4C4" }
+                            else if (result[10] == "D") { Renk4T = "S4D4" }
+                            document.getElementById(Renk4T).style.backgroundColor = "green";
+                            document.getElementById(Renk4T).style.color = "white";
+                        }
+                        else {
+                            var RenkYanlis4 = "", Renk4F = "";
+                            if (result[11] == "A") { Renk4F = "S4A4"; }
+                            else if (result[11] == "B") { Renk4F = "S4B4" }
+                            else if (result[11] == "C") { Renk4F = "S4C4" }
+                            else if (result[11] == "D") { Renk4F = "S4D4" }
+                            document.getElementById(Renk4F).style.backgroundColor = "green";
+                            document.getElementById(Renk4F).style.color = "white";
+
+                            if (result[10] == "A") { RenkYanlis4 = "S4A4"; }
+                            else if (result[10] == "B") { RenkYanlis4 = "S4B4" }
+                            else if (result[10] == "C") { RenkYanlis4 = "S4C4" }
+                            else if (result[10] == "D") { RenkYanlis4 = "S4D4" }
+                            document.getElementById(RenkYanlis4).style.backgroundColor = "red";
+                            document.getElementById(RenkYanlis4).style.color = "white";
+
+                        }
+
+                        document.getElementById("S1A").disabled = true;
+                        document.getElementById("S1B").disabled = true;
+                        document.getElementById("S1C").disabled = true;
+                        document.getElementById("S1D").disabled = true;
+
+                        document.getElementById("S2A").disabled = true;
+                        document.getElementById("S2B").disabled = true;
+                        document.getElementById("S2C").disabled = true;
+                        document.getElementById("S2D").disabled = true;
+
+                        document.getElementById("S3A").disabled = true;
+                        document.getElementById("S3B").disabled = true;
+                        document.getElementById("S3C").disabled = true;
+                        document.getElementById("S3D").disabled = true;
+
+                        document.getElementById("S4A").disabled = true;
+                        document.getElementById("S4B").disabled = true;
+                        document.getElementById("S4C").disabled = true;
+                        document.getElementById("S4D").disabled = true;
+                    }
+
+                });
+            }
         });
     });
 </script>

@@ -345,12 +345,111 @@ namespace SinavOlustur.Controllers
             ViewBag.B4 = SinavlarList[3].B;
             ViewBag.C4 = SinavlarList[3].C;
             ViewBag.D4 = SinavlarList[3].D;
+
+            Fonksiyonlar.Cevap1 = SinavlarList[0].DogruCevap;
+            Fonksiyonlar.Cevap2 = SinavlarList[1].DogruCevap;
+            Fonksiyonlar.Cevap3 = SinavlarList[2].DogruCevap;
+            Fonksiyonlar.Cevap4 = SinavlarList[3].DogruCevap;
             return View();
         }
-        public JsonResult SinaviTamamla(string S1,string S2,string S3,string S4)
+        public JsonResult SinaviTamamla(string S1, string S2, string S3, string S4)
         {
             Boolean mesaj = false;
-            return Json(mesaj);
+            
+            if(S1!=null || S2!=null || S3!=null || S4 != null)
+            {
+                mesaj = true;
+                if (S1 == Fonksiyonlar.Cevap1)
+                {
+                    Fonksiyonlar.Sonuc1 = "T";
+                    if (S1 == "A") { Fonksiyonlar.RenkS1A = "green"; }
+                    else if (S1 == "B") { Fonksiyonlar.RenkS1B = "green"; }
+                    else if (S1 == "C") { Fonksiyonlar.RenkS1C = "green"; }
+                    else if(S1=="D"){ Fonksiyonlar.RenkS1D = "green"; }
+                }
+                else
+                {
+                    Fonksiyonlar.Sonuc1 = "F";
+                    if (S1 == "A") { Fonksiyonlar.RenkS1A = "red"; }
+                    else if (S1 == "B") { Fonksiyonlar.RenkS1B = "red"; }
+                    else if (S1 == "C") { Fonksiyonlar.RenkS1C = "red"; }
+                    else if (S1=="D") { Fonksiyonlar.RenkS1D = "red"; }
+
+                    if (Fonksiyonlar.Cevap1 == "A") { Fonksiyonlar.RenkS1A = "green"; }
+                    else if (Fonksiyonlar.Cevap1 == "B") { Fonksiyonlar.RenkS1B = "green"; }
+                    else if (Fonksiyonlar.Cevap1 == "C") { Fonksiyonlar.RenkS1C = "green"; }
+                    else if (Fonksiyonlar.Cevap1 == "D") { Fonksiyonlar.RenkS1D = "green"; }
+                }
+
+                if (S2 == Fonksiyonlar.Cevap2)
+                {
+                    Fonksiyonlar.Sonuc2 = "T";
+                    if (S2 == "A") { Fonksiyonlar.RenkS2A = "green"; }
+                    else if (S2 == "B") { Fonksiyonlar.RenkS2B = "green"; }
+                    else if (S2 == "C") { Fonksiyonlar.RenkS2C = "green"; }
+                    else if(S2=="D"){ Fonksiyonlar.RenkS2D = "green"; }
+                }
+                else
+                {
+                    Fonksiyonlar.Sonuc2 = "F";
+                    if (S2 == "A") { Fonksiyonlar.RenkS2A = "red"; }
+                    else if (S2 == "B") { Fonksiyonlar.RenkS2B = "red"; }
+                    else if (S2 == "C") { Fonksiyonlar.RenkS2C = "red"; }
+                    else if(S2=="D"){ Fonksiyonlar.RenkS2D = "red"; }
+
+                    if (Fonksiyonlar.Cevap2 == "A") { Fonksiyonlar.RenkS2A = "green"; }
+                    else if (Fonksiyonlar.Cevap2 == "B") { Fonksiyonlar.RenkS2B = "green"; }
+                    else if (Fonksiyonlar.Cevap2 == "C") { Fonksiyonlar.RenkS2C = "green"; }
+                    else if (Fonksiyonlar.Cevap2 == "D") { Fonksiyonlar.RenkS2D = "green"; }
+                }
+
+
+                if (S3 == Fonksiyonlar.Cevap3)
+                {
+                    Fonksiyonlar.Sonuc3 = "T";
+                    if (S3 == "A") { Fonksiyonlar.RenkS3A = "green"; }
+                    else if (S3 == "B") { Fonksiyonlar.RenkS3B = "green"; }
+                    else if (S3 == "C") { Fonksiyonlar.RenkS3C = "green"; }
+                    else if (S3=="D"){ Fonksiyonlar.RenkS3D = "green"; }
+                }
+                else
+                {
+                    Fonksiyonlar.Sonuc3 = "F";
+                    if (S3 == "A") { Fonksiyonlar.RenkS3A = "red"; }
+                    else if (S3 == "B") { Fonksiyonlar.RenkS3B = "red"; }
+                    else if (S3 == "C") { Fonksiyonlar.RenkS3C = "red"; }
+                    else if(S3=="D") { Fonksiyonlar.RenkS3D = "red"; }
+
+                    if (Fonksiyonlar.Cevap3 == "A") { Fonksiyonlar.RenkS3A = "green"; }
+                    else if (Fonksiyonlar.Cevap3 == "B") { Fonksiyonlar.RenkS3B = "green"; }
+                    else if (Fonksiyonlar.Cevap3 == "C") { Fonksiyonlar.RenkS3C = "green"; }
+                    else if (Fonksiyonlar.Cevap3 == "D") { Fonksiyonlar.RenkS3D = "green"; }
+                }
+
+
+                if (S4 == Fonksiyonlar.Cevap4)
+                {
+                    Fonksiyonlar.Sonuc4 = "T";
+                    if (S4 == "A") { Fonksiyonlar.RenkS4A = "green"; }
+                    else if (S4 == "B") { Fonksiyonlar.RenkS4B = "green"; }
+                    else if (S4 == "C") { Fonksiyonlar.RenkS4C = "green"; }
+                    else if (S4=="D") { Fonksiyonlar.RenkS4D = "green"; }
+                }
+                else
+                {
+                    Fonksiyonlar.Sonuc4 = "F";
+                    if (S4 == "A") { Fonksiyonlar.RenkS4A = "red"; }
+                    else if (S4 == "B") { Fonksiyonlar.RenkS4B = "red"; }
+                    else if (S4 == "C") { Fonksiyonlar.RenkS4C = "red"; }
+                    else if(S4=="D") { Fonksiyonlar.RenkS4D = "red"; }
+
+                    if (Fonksiyonlar.Cevap4 == "A") { Fonksiyonlar.RenkS4A = "green"; }
+                    else if (Fonksiyonlar.Cevap4 == "B") { Fonksiyonlar.RenkS4B = "green"; }
+                    else if (Fonksiyonlar.Cevap4 == "C") { Fonksiyonlar.RenkS4C = "green"; }
+                    else if(Fonksiyonlar.Cevap4 == "D") { Fonksiyonlar.RenkS4D = "green"; }
+                }
+            }
+            return Json(Fonksiyonlar.Sonuc1+S1+Fonksiyonlar.Cevap1+Fonksiyonlar.Sonuc2+S2+Fonksiyonlar.Cevap2+Fonksiyonlar.Sonuc3+S3+Fonksiyonlar.Cevap3+Fonksiyonlar.Sonuc4+S4+Fonksiyonlar.Cevap4);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
