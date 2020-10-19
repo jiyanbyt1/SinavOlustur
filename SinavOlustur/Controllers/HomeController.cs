@@ -150,9 +150,15 @@ namespace SinavOlustur.Controllers
                     Fonksiyonlar.GelenID = data.ID;
                     Fonksiyonlar.AdSoyad = data.Name.ToString();
                 }
-                else
+                else if(data.Yetki.ToString()== "Kullanıcı")
                 {
                     sonuc = 2;
+                    Fonksiyonlar.GelenID = data.ID;
+                    Fonksiyonlar.AdSoyad = data.Name.ToString();
+                }
+                else
+                {
+                    sonuc = 3;
                     Fonksiyonlar.GelenID = data.ID;
                     Fonksiyonlar.AdSoyad = data.Name.ToString();
                 }
@@ -165,10 +171,22 @@ namespace SinavOlustur.Controllers
 
             return Json(sonuc);
         }    
+
         public IActionResult Giris()
         {
             return View();
         }
+
+        public IActionResult Kayit(string name,string email,string sifre, string yetki)
+        {
+            string query = "insert into Login(Name,Email,Sifre,Yetki) values('"+name+"','"+email+"','"+sifre+"','"+yetki+"')";
+            dbCon.Execute(query);
+
+            return Redirect("/Home/Giris");
+        }
+
+
+
         [HttpPost]
         public JsonResult SinavMetni(string baslik, string Index)
         {
@@ -486,6 +504,8 @@ namespace SinavOlustur.Controllers
             Fonksiyonlar.AdSoyad = name;
             return Redirect("/Home/KulProfil");
         }
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -8,15 +8,59 @@
     <form method="post">
         <div class="form-group">
             <label for="usr"><i class="fas fa-address-book"></i> Eposta:</label>
-            <input style="width:60%" type="text" required class="form-control" id="usr" name="email">
+            <br />
+            <input style="width:50%" type="text" required class="form-control" id="usr" name="email">
         </div>
         <div class="form-group">
             <label for="pwd"><i class="fas fa-lock"></i> Şifre:</label>
-            <input style="width:60%" type="password" required class="form-control" id="pwd" name="pass">
+            <br />
+            <input style="width:50%" type="password" required class="form-control" id="pwd" name="pass">
         </div>
-        <button id="btngiris" style="width:57%; padding:15px;margin:10px;" type="button" class="btn btn-outline-light text-dark"><h6 style="color:green">GİRİŞ YAP</h6></button>
+        <button id="btngiris" style="width:48%; padding:10px;margin:5px;" type="button" class="btn btn-outline-light text-dark"><h6 style="color:green">GİRİŞ YAP</h6></button>
     </form>
 </div>
+@*Kullanıcı veya Yönetici Kayıt Formu*@
+<h2>Kayıt Olmak için;</h2>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
+
+<div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content" action="/Home/Kayit">
+        <div class="container">
+            <h1 style="color:#000000">KAYIT FORMU</h1>
+            <p style="color:#000000">Lütfen Formu Eksiksiz Doldurun.</p>
+            <hr>
+            <label for="name"><b style="color:#000000">Adınızı ve Soyadınızı Giriniz:</b></label>
+            <input type="text" placeholder="Ad ve Soyad giriniz" name="name" required>
+
+            <label for="email"><b style="color:#000000">Email Adresinizi Giriniz:</b></label>
+            <input type="text" placeholder="Email giriniz" name="email" required>
+
+            <div style="width:1000px" class="alert alert-info alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Bilgilendirme!</strong> Yönetici yetkisi sınav oluşturmak için, kullanıcı sınavlara girmek içindir.
+            </div>
+
+            <label for="yetki"><b style="color:#000000">Bir Yetki Giriniz:</b></label>
+            <select id="yetki" name="yetki" class="custom-select custom-select-sm" required>
+                <option value="Yönetici">Yönetici</option>
+                <option value="Kullanıcı">Kullanıcı</option>
+            </select>
+
+            <label for="sifre"><b style="color:#000000">Şifrenizi Giriniz:</b></label>
+            <input type="password" placeholder="Bir şifre giriniz" name="sifre" required>
+
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">İPTAL ET</button>
+                <button type="submit" class="signupbtn">KAYIT OL</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
 <script src="/jquery-3.3.1.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -33,12 +77,26 @@
                     else if (result == 2) {
                         $(location).prop('href', '/Home/KulSinavListesi');
                     }
-                    else {
+                    else if (result == 3) {
+                        $(location).prop('href', '/Home/KulSinavListesi');
+                    } else {
                         alert("Girmiş olduğunuz bilgiler yanlıştır. Lütfen tekrar deneyiniz.");
                     }
+
                 }
             });
         });
     });
 </script>
+<script src="/jquery-3.3.1.min.js"></script>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
 
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
