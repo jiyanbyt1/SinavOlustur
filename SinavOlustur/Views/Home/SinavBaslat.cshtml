@@ -4,16 +4,20 @@
     Layout = "~/Views/Shared/KullaniciLayout.cshtml";
     int i = 0;
 }
+<link href="~/css/Snackbar.css" rel="stylesheet" />
 <style>
     #S1A1 {
         background-color: white;
     }
+
     #S1B1 {
         background-color: white;
     }
+
     #S1C1 {
         background-color: white;
     }
+
     #S1D1 {
         background-color: white;
     }
@@ -150,7 +154,7 @@
         </div>
         <div class="col-sm">
             <br />
-            <button id="SinaviTamamla" style="width:500px; padding:15px;margin:10px;" type="button" class="btn btn-outline-light text-dark"><h6 style="color:red">SINAVI TAMAMLA</h6></button>
+            <button onclick="myFunction()" id="SinaviTamamla" style="width:500px; padding:15px;margin:10px;" type="button" class="btn btn-outline-light text-dark"><h6 style="color:red">SINAVI TAMAMLA</h6></button>
         </div>
         <div class="col-sm">
 
@@ -161,6 +165,7 @@
     </div>
 
 </div>
+<div id="snackbar">İşlem Tamamlandı.Sınavınız Bitmiştir...</div>
 <br />
 <br />
 <br />
@@ -223,9 +228,11 @@
                     type: 'POST',
                     url: '/Home/SinaviTamamla',
                     dataType: 'json',
-                    data: { "S1": S1, "S2":S2, "S3":S3, "S4":S4 },
+                    data: { "S1": S1, "S2": S2, "S3": S3, "S4": S4 },
                     success: function (result) {
-
+                        var x = document.getElementById("snackbar");
+                        x.className = "show";
+                        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 
                         if (result[0] == "T") {
                             var Renk1T = "";
@@ -359,5 +366,6 @@
                 });
             }
         });
+
     });
 </script>
