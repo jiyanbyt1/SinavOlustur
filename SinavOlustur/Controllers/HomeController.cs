@@ -172,6 +172,42 @@ namespace SinavOlustur.Controllers
             return Json(sonuc);
         }    
 
+        public IActionResult Yonetim()
+        {
+            List<Login> SinavlarList = dbCon.Query<Login>("select * from Login where Yetki='Yönetici' or Yetki='Kullanıcı' ").ToList();
+            ViewBag.Liste = SinavlarList;
+            return View();
+        }
+
+        public JsonResult KulSil(int id)
+        {
+            Boolean Mesaj = false;
+
+            string query = "delete from Login where ID='" + id + "'";
+            dbCon.Execute(query);
+            Mesaj = true;
+            return Json(Mesaj);
+        }
+        public IActionResult KulGuncelle(int id,string name,string email,string yetki, string sifre)
+        {
+            
+
+            string query = "UPDATE Login SET Name='"+name+"', Email='"+email+"', Sifre='"+sifre+"',Yetki='"+yetki+"' where ID='"+id+"'";
+            dbCon.Execute(query);
+            
+            return Redirect("/Home/Yonetim");
+        }
+
+        public IActionResult KulEkle(string name, string email, string yetki, string sifre)
+        {
+
+
+            string query = "INSERT into Login(Name,Email,Sifre,Yetki) VALUES ('"+name+"','"+email+"','"+sifre+"','"+yetki+"')";
+            dbCon.Execute(query);
+
+            return Redirect("/Home/Yonetim");
+        }
+
         public IActionResult Giris()
         {
             return View();
@@ -297,7 +333,7 @@ namespace SinavOlustur.Controllers
             dbCon.Execute(querySinavlar);
 
             Sayi = Sayi + 1;
-            string queryupdate = "update Sinav Set Sayi='" + Sayi + "' where SinavID=2";
+            string queryupdate = "update Sinav Set Sayi='" + Sayi + "' where SinavID=1";
             dbCon.Execute(queryupdate);
 
             mesaj = true;

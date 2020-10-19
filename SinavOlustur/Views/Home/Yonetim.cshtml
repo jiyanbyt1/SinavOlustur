@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewData["Title"] = "Yonetim";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int say = 0;
+    int guncelid = 0;
+}
+<link href="~/css/KulEkle.css" rel="stylesheet" />
+<h2>Yonetim</h2>
+
+<hr />
+<div class="container">
+    <h4>Sınav Listesi:</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Adı Soyadı</th>
+                <th>Email Adresi</th>
+                <th>Şifresi</th>
+                <th>Yetkisi</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Liste)
+            {
+                say = say + 1;
+                <tr id="@say">
+
+                    <td>@say</td>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.Sifre</td>
+                    <td>@item.Yetki</td>
+                    <td><button class="btn btn-primary" onclick="document.getElementById('id01').style.display = 'block'; $('#id').val(@item.ID);">Güncelle</button></td>
+
+                    <td><button class="btn btn-danger" onclick="satirSil(@item.ID,'/Home/KulSil');return false">SIL</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" action="/Home/KulGuncelle" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+
+            <label for="name"><b>ID:</b></label>
+            <input type="text" placeholder="Ad Soyad" name="id" id="id" value="" required>
+
+            <label for="name"><b>Adınız Ve Soyadınız:</b></label>
+            <input type="text" placeholder="Ad Soyad" name="name" id="name" value="" required>
+
+            <label for="email"><b>Email Adresiniz:</b></label>
+            <input type="text" placeholder="Email" name="email" id="email" value="" required>
+
+
+            <div style="width:1000px" class="alert alert-info alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Bilgilendirme!</strong> Yönetici yetkisi sınav oluşturmak için, kullanıcı sınavlara girmek içindir.
+            </div>
+
+            <label for="yetki"><b style="color:#000000">Bir Yetki Giriniz:</b></label>
+            <select id="yetki" name="yetki" class="custom-select custom-select-sm" required>
+                <option value="Yönetici">Yönetici</option>
+                <option value="Kullanıcı">Kullanıcı</option>
+            </select>
+
+            <label for="sifre"><b>Şifreniz:</b></label>
+            <input type="password" placeholder="Enter Password" name="sifre" id="sifre" value="" required>
+
+            <input type="checkbox" onclick="myFunction()" />
+            <label>Şifreyi Göster</label>
+
+            <button type="submit" class="btn btn-primary">Güncelle</button>
+
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">İPTAL</button>
+        </div>
+    </form>
+</div>
+
+
+
+<button onclick="document.getElementById('id011').style.display='block'" style="width:auto;">Ekle</button>
+
+<div id="id011" class="modal">
+
+    <form class="modal-content animate" action="/Home/KulEkle" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id011').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="name"><b>Adı ve Soyadı:</b></label>
+            <input type="text" placeholder="Ad soyad" name="name" id="name" required>
+
+            <label for="email"><b>Email Adresi:</b></label>
+            <input type="text" placeholder="Email" name="email" id="email" required>
+
+            <label for="sifre"><b>Şifre:</b></label>
+            <input type="password" placeholder="Sifre" name="sifre" id="sifre" required>
+
+            <label for="yetki"><b style="color:#000000">Bir Yetki Giriniz:</b></label>
+            <select id="yetki" name="yetki" class="custom-select custom-select-sm" required>
+                <option value="Yönetici">Yönetici</option>
+                <option value="Kullanıcı">Kullanıcı</option>
+            </select>
+
+            <button type="submit">EKLE</button>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id011').style.display='none'" class="cancelbtn">İPTAL</button>
+        </div>
+    </form>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+<script src="~/jquery-3.3.1.min.js"></script>
+<script>
+    function satirSil(id, url) {
+        if (confirm('Eminmisiniz?')) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { "id": id },
+                success: function (html) {
+                    if (html == true) {
+                        $(location).prop('href', '/Home/Yonetim');
+                    }
+                    else {
+                        alert("Silme İşlemi Başarısız.");
+                    }
+                }
+            });
+        }
+    }
+
+
+</script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("sifre");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>

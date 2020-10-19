@@ -152,3 +152,4 @@ C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Ra
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Home\KulProfil.cshtml.g.cs
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Home\Profil.cshtml.g.cs
 C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AdminLayout.cshtml.g.cs
+C:\Users\Jiyan\source\repos\SinavOlustur\SinavOlustur\obj\Debug\netcoreapp3.1\Razor\Views\Home\Yonetim.cshtml.g.cs
