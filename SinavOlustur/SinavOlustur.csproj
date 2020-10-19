@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\Profil.css" />
     <None Include="wwwroot\css\Spinner.css" />
   </ItemGroup>
 

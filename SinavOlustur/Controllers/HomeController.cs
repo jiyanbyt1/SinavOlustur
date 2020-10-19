@@ -147,12 +147,14 @@ namespace SinavOlustur.Controllers
                 if (data.Yetki.ToString() == "Yönetici")
                 {
                     sonuc = 1;
-                    Fonksiyonlar.GelenID = data.ID.ToString();
+                    Fonksiyonlar.GelenID = data.ID;
+                    Fonksiyonlar.AdSoyad = data.Name.ToString();
                 }
                 else
                 {
                     sonuc = 2;
-                    Fonksiyonlar.GelenID = data.ID.ToString();
+                    Fonksiyonlar.GelenID = data.ID;
+                    Fonksiyonlar.AdSoyad = data.Name.ToString();
                 }
  
             }
@@ -451,6 +453,40 @@ namespace SinavOlustur.Controllers
             }
             return Json(Fonksiyonlar.Sonuc1+S1+Fonksiyonlar.Cevap1+Fonksiyonlar.Sonuc2+S2+Fonksiyonlar.Cevap2+Fonksiyonlar.Sonuc3+S3+Fonksiyonlar.Cevap3+Fonksiyonlar.Sonuc4+S4+Fonksiyonlar.Cevap4);
         }
+
+        public IActionResult Profil()
+        {
+            List<Login> LoginList = dbCon.Query<Login>("select * from Login").ToList();
+            var data = LoginList.Where<Login>(item => item.ID == Fonksiyonlar.GelenID).FirstOrDefault();
+            ViewBag.name = data.Name.ToString();
+            ViewBag.email = data.Email.ToString();
+            ViewBag.sifre = data.Sifre.ToString();
+            return View();
+        }
+        public IActionResult Profil1(string name, string email, string sifre)
+        {
+            string query = "update Login set Name='" + name + "', Email='" + email + "', Sifre='" + sifre + "' where ID='" + Fonksiyonlar.GelenID + "'";
+            dbCon.Execute(query);
+            Fonksiyonlar.AdSoyad = name;
+            return Redirect("/Home/Profil");
+        }
+        public IActionResult KulProfil()
+        {
+            List<Login> LoginList = dbCon.Query<Login>("select * from Login").ToList();
+            var data = LoginList.Where<Login>(item => item.ID == Fonksiyonlar.GelenID).FirstOrDefault();
+            ViewBag.name = data.Name.ToString();
+            ViewBag.email = data.Email.ToString();
+            ViewBag.sifre = data.Sifre.ToString();
+            return View();
+        }
+        public IActionResult KulProfil1(string name, string email,string sifre)
+        {
+            string query = "update Login set Name='" + name + "', Email='" + email + "', Sifre='" + sifre + "' where ID='" + Fonksiyonlar.GelenID + "'";
+            dbCon.Execute(query);
+            Fonksiyonlar.AdSoyad = name;
+            return Redirect("/Home/KulProfil");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

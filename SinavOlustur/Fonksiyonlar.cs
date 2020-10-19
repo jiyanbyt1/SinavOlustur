@@ -7,7 +7,8 @@ namespace SinavOlustur
 {
     public class Fonksiyonlar
     {
-        public static string GelenID = "";
+        public static string AdSoyad = "";
+        public static int GelenID = 0;
         public static string Baslik1 = "";
 
         public static int SinavGirisID = 0;
